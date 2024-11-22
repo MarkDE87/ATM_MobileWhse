@@ -1,13 +1,7 @@
-# AL-Go Per Tenant Extension Template
+# ARVA ATM Per Tenant Extension
+# Mobile Warehouse SOAP & REST-API Interface
 
-This template repository can be used for managing AppSource Apps for Business Central.
+Entwicklung für ARVA Digital für den Kunde ATM Tornau. SOAP Webservice Funktion für Artikelbuchungen Zu-/Abgänge sowie Umlagerungen.
 
-[![Use this template](https://github.com/microsoft/AL-Go/assets/10775043/ca1ecc85-2fd3-4ab5-a866-bd2e7e80259d)](https://github.com/new?template_name=AL-Go-PTE&template_owner=microsoft)
+Momentan für Dynamics NAV 2018 C/AL. Hier in GitHub bereits die AL Variante zusätzlich.
 
-Please go to https://aka.ms/AL-Go to learn more.
-
-## Contributing
-
-Please read [this](https://github.com/microsoft/AL-Go/blob/main/Scenarios/Contribute.md) description on how to contribute to AL-Go for GitHub.
-
-We do not accept Pull Requests on the template repository directly.
