@@ -1,0 +1,31 @@
+{
+    "name": "Geiger AL Default Ruleset",
+    "description": "These rules must be respected by alll the AL code written within the company",
+    "rules": [
+        {
+            "id": "AA0005",
+            "action": "Hidden",
+            "justification": "This is OK -> Avoid AA0005 warning notification for BEGIN .. END only with compound statements"
+        },        
+        {
+            "id": "AL1027",
+            "action": "Hidden",
+            "justification": "This is KO -> Avoid AL1027 info notification for PermissionSet definition matches"
+        },
+        {
+            "id": "AS0015",
+            "action": "Hidden",
+            "justification": "This is OK -> We don't need translations at the moment."
+        },
+        {
+            "id": "AA0072",
+            "action": "Hidden",
+            "justification": "Ignore Suffix of variable declaration."
+        },       
+        {
+            "id": "AW0006",
+            "action": "Hidden",
+            "justification": "Ignore UsageCategory. Must not set on all Pages!"
+        }
+    ]
+}
