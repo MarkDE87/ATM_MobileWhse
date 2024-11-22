@@ -1,0 +1,909 @@
+{
+	"info": {
+		"_postman_id": "07d78dee-34f0-4f40-8980-c99fce2d7641",
+		"name": "ArvaWS - Artikelbuchungen",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12121504"
+	},
+	"item": [
+		{
+			"name": "Mit Lagerfach",
+			"item": [
+				{
+					"name": "Artikel Zugang",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "SOAPAction",
+								"value": "urn:microsoft-dynamics-schemas/codeunit/ArvaWS:AdjustItemInventory",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:arv=\"urn:microsoft-dynamics-schemas/codeunit/ArvaWS\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n        <arv:AdjustItemInventory>\r\n            <arv:userName>{{UserName}}</arv:userName>\r\n            <arv:itemNo>{{ItemNumber}}</arv:itemNo>\r\n            <arv:fromLocationCode>{{LocationCode1}}</arv:fromLocationCode>\r\n            <arv:fromBinCode>{{BinCode1}}</arv:fromBinCode>\r\n            <arv:quantity>3</arv:quantity>\r\n            <arv:serialNumber></arv:serialNumber>\r\n            <arv:causeCode></arv:causeCode>\r\n            <arv:postNow>true</arv:postNow>\r\n        </arv:AdjustItemInventory>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/{{CompanyName}}/Codeunit/ArvaWS",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"{{CompanyName}}",
+								"Codeunit",
+								"ArvaWS"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Artikel Zugang Mit Ursachencode",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "SOAPAction",
+								"value": "urn:microsoft-dynamics-schemas/codeunit/ArvaWS:AdjustItemInventory",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:arv=\"urn:microsoft-dynamics-schemas/codeunit/ArvaWS\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n        <arv:AdjustItemInventory>\r\n            <arv:userName>{{UserName}}</arv:userName>\r\n            <arv:itemNo>{{ItemNumber}}</arv:itemNo>\r\n            <arv:fromLocationCode>{{LocationCode1}}</arv:fromLocationCode>\r\n            <arv:fromBinCode>{{BinCode1}}</arv:fromBinCode>\r\n            <arv:quantity>3</arv:quantity>\r\n            <arv:serialNumber></arv:serialNumber>\r\n            <arv:causeCode>SCHROTT</arv:causeCode>\r\n            <arv:postNow>true</arv:postNow>\r\n        </arv:AdjustItemInventory>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/{{CompanyName}}/Codeunit/ArvaWS",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"{{CompanyName}}",
+								"Codeunit",
+								"ArvaWS"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Artikel Umlagerung 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "SOAPAction",
+								"value": "urn:microsoft-dynamics-schemas/codeunit/ArvaWS:TransferItemInventory",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:arv=\"urn:microsoft-dynamics-schemas/codeunit/ArvaWS\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <arv:TransferItemInventory>\r\n         <arv:userName>{{UserName}}</arv:userName>\r\n         <arv:itemNo>{{ItemNumber}}</arv:itemNo>\r\n         <arv:fromLocationCode>{{LocationCode1}}</arv:fromLocationCode>\r\n         <arv:fromBinCode>{{BinCode1}}</arv:fromBinCode>\r\n         <arv:toLocationCode>{{LocationCode1}}</arv:toLocationCode>\r\n         <arv:toBinCode>{{BinCode2}}</arv:toBinCode>\r\n         <arv:makeTargetBinAsDefault>false</arv:makeTargetBinAsDefault>\r\n         <arv:quantity>3</arv:quantity>\r\n         <arv:serialNumber></arv:serialNumber>\r\n         <arv:postNow>true</arv:postNow>\r\n      </arv:TransferItemInventory>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/{{CompanyName}}/Codeunit/ArvaWS",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"{{CompanyName}}",
+								"Codeunit",
+								"ArvaWS"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Artikel Umlagerung 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "SOAPAction",
+								"value": "urn:microsoft-dynamics-schemas/codeunit/ArvaWS:TransferItemInventory",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:arv=\"urn:microsoft-dynamics-schemas/codeunit/ArvaWS\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n        <arv:TransferItemInventory>\r\n            <arv:userName>{{UserName}}</arv:userName>\r\n            <arv:itemNo>{{ItemNumber}}</arv:itemNo>\r\n            <arv:fromLocationCode>{{LocationCode1}}</arv:fromLocationCode>\r\n            <arv:fromBinCode>{{BinCode2}}</arv:fromBinCode>\r\n            <arv:toLocationCode>{{LocationCode1}}</arv:toLocationCode>\r\n            <arv:toBinCode>{{BinCode1}}</arv:toBinCode>\r\n            <arv:makeTargetBinAsDefault>false</arv:makeTargetBinAsDefault>\r\n            <arv:quantity>3</arv:quantity>\r\n            <arv:serialNumber></arv:serialNumber>\r\n            <arv:postNow>true</arv:postNow>\r\n        </arv:TransferItemInventory>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/{{CompanyName}}/Codeunit/ArvaWS",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"{{CompanyName}}",
+								"Codeunit",
+								"ArvaWS"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Artikel Abgang",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "SOAPAction",
+								"value": "urn:microsoft-dynamics-schemas/codeunit/ArvaWS:AdjustItemInventory",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:arv=\"urn:microsoft-dynamics-schemas/codeunit/ArvaWS\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <arv:AdjustItemInventory>\r\n         <arv:userName>{{UserName}}</arv:userName>\r\n         <arv:itemNo>{{ItemNumber}}</arv:itemNo>\r\n         <arv:fromLocationCode>{{LocationCode1}}</arv:fromLocationCode>\r\n         <arv:fromBinCode>{{BinCode1}}</arv:fromBinCode>\r\n         <arv:quantity>-3</arv:quantity>\r\n         <arv:serialNumber></arv:serialNumber>\r\n         <arv:causeCode></arv:causeCode>\r\n         <arv:postNow>true</arv:postNow>\r\n      </arv:AdjustItemInventory>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/{{CompanyName}}/Codeunit/ArvaWS",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"{{CompanyName}}",
+								"Codeunit",
+								"ArvaWS"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Artikel Abgang Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "SOAPAction",
+								"value": "urn:microsoft-dynamics-schemas/codeunit/ArvaWS:AdjustItemInventory",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:arv=\"urn:microsoft-dynamics-schemas/codeunit/ArvaWS\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <arv:AdjustItemInventory>\r\n         <arv:userName>{{UserName}}</arv:userName>\r\n         <arv:itemNo>{{ItemNumber}}</arv:itemNo>\r\n         <arv:fromLocationCode>{{LocationCode1}}</arv:fromLocationCode>\r\n         <arv:fromBinCode>{{BinCode1}}</arv:fromBinCode>\r\n         <arv:quantity>-3</arv:quantity>\r\n         <arv:serialNumber></arv:serialNumber>\r\n         <arv:causeCode>SCHROTT</arv:causeCode>\r\n         <arv:postNow>true</arv:postNow>\r\n      </arv:AdjustItemInventory>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/{{CompanyName}}/Codeunit/ArvaWS",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"{{CompanyName}}",
+								"Codeunit",
+								"ArvaWS"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ohne Lagerfach",
+			"item": [
+				{
+					"name": "Artikel Zugang",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "SOAPAction",
+								"value": "urn:microsoft-dynamics-schemas/codeunit/ArvaWS:AdjustItemInventory",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:arv=\"urn:microsoft-dynamics-schemas/codeunit/ArvaWS\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n        <arv:AdjustItemInventory>\r\n            <arv:userName>{{UserName}}</arv:userName>\r\n            <arv:itemNo>{{ItemNumber}}</arv:itemNo>\r\n            <arv:fromLocationCode>{{LocationCode2}}</arv:fromLocationCode>\r\n            <arv:fromBinCode></arv:fromBinCode>\r\n            <arv:quantity>3</arv:quantity>\r\n            <arv:serialNumber></arv:serialNumber>\r\n            <arv:causeCode></arv:causeCode>\r\n            <arv:postNow>true</arv:postNow>\r\n        </arv:AdjustItemInventory>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/{{CompanyName}}/Codeunit/ArvaWS",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"{{CompanyName}}",
+								"Codeunit",
+								"ArvaWS"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Artikel Umlagerung",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "SOAPAction",
+								"value": "urn:microsoft-dynamics-schemas/codeunit/ArvaWS:TransferItemInventory",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:arv=\"urn:microsoft-dynamics-schemas/codeunit/ArvaWS\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <arv:TransferItemInventory>\r\n         <arv:userName>{{UserName}}</arv:userName>\r\n         <arv:itemNo>{{ItemNumber}}</arv:itemNo>\r\n         <arv:fromLocationCode>{{LocationCode2}}</arv:fromLocationCode>\r\n         <arv:fromBinCode></arv:fromBinCode>\r\n         <arv:toLocationCode>{{LocationCode1}}</arv:toLocationCode>\r\n         <arv:toBinCode>{{BinCode2}}</arv:toBinCode>\r\n         <arv:makeTargetBinAsDefault>false</arv:makeTargetBinAsDefault>\r\n         <arv:quantity>3</arv:quantity>\r\n         <arv:serialNumber></arv:serialNumber>\r\n         <arv:postNow>true</arv:postNow>\r\n      </arv:TransferItemInventory>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/{{CompanyName}}/Codeunit/ArvaWS",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"{{CompanyName}}",
+								"Codeunit",
+								"ArvaWS"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Artikel Umlagerung",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "SOAPAction",
+								"value": "urn:microsoft-dynamics-schemas/codeunit/ArvaWS:TransferItemInventory",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:arv=\"urn:microsoft-dynamics-schemas/codeunit/ArvaWS\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n        <arv:TransferItemInventory>\r\n            <arv:userName>{{UserName}}</arv:userName>\r\n            <arv:itemNo>{{ItemNumber}}</arv:itemNo>\r\n            <arv:fromLocationCode>{{LocationCode1}}</arv:fromLocationCode>\r\n            <arv:fromBinCode>{{BinCode2}}</arv:fromBinCode>\r\n            <arv:toLocationCode>{{LocationCode2}}</arv:toLocationCode>\r\n            <arv:toBinCode></arv:toBinCode>\r\n            <arv:makeTargetBinAsDefault>false</arv:makeTargetBinAsDefault>\r\n            <arv:quantity>3</arv:quantity>\r\n            <arv:serialNumber></arv:serialNumber>\r\n            <arv:postNow>true</arv:postNow>\r\n        </arv:TransferItemInventory>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/{{CompanyName}}/Codeunit/ArvaWS",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"{{CompanyName}}",
+								"Codeunit",
+								"ArvaWS"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Artikel Abgang",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "SOAPAction",
+								"value": "urn:microsoft-dynamics-schemas/codeunit/ArvaWS:AdjustItemInventory",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:arv=\"urn:microsoft-dynamics-schemas/codeunit/ArvaWS\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <arv:AdjustItemInventory>\r\n         <arv:userName>{{UserName}}</arv:userName>\r\n         <arv:itemNo>{{ItemNumber}}</arv:itemNo>\r\n         <arv:fromLocationCode>{{LocationCode2}}</arv:fromLocationCode>\r\n         <arv:fromBinCode></arv:fromBinCode>\r\n         <arv:quantity>-3</arv:quantity>\r\n         <arv:serialNumber></arv:serialNumber>\r\n         <arv:causeCode></arv:causeCode>\r\n         <arv:postNow>true</arv:postNow>\r\n      </arv:AdjustItemInventory>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/{{CompanyName}}/Codeunit/ArvaWS",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"{{CompanyName}}",
+								"Codeunit",
+								"ArvaWS"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Erweiterte Tests",
+			"item": [
+				{
+					"name": "Artikel Zugang - ohne Lagerortangabe",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "SOAPAction",
+								"value": "urn:microsoft-dynamics-schemas/codeunit/ArvaWS:AdjustItemInventory",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:arv=\"urn:microsoft-dynamics-schemas/codeunit/ArvaWS\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <arv:AdjustItemInventory>\r\n         <arv:userName>{{UserName}}</arv:userName>\r\n         <arv:itemNo>{{ItemNumber}}</arv:itemNo>\r\n         <arv:fromLocationCode></arv:fromLocationCode>\r\n         <arv:fromBinCode>H2</arv:fromBinCode>\r\n         <arv:quantity>3</arv:quantity>\r\n         <arv:serialNumber></arv:serialNumber>\r\n         <arv:causeCode></arv:causeCode>\r\n         <arv:postNow>true</arv:postNow>\r\n      </arv:AdjustItemInventory>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/{{CompanyName}}/Codeunit/ArvaWS",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"{{CompanyName}}",
+								"Codeunit",
+								"ArvaWS"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Artikel Umlagerung - mit Neuem Standard Lagerfach",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "SOAPAction",
+								"value": "urn:microsoft-dynamics-schemas/codeunit/ArvaWS:TransferItemInventory",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:arv=\"urn:microsoft-dynamics-schemas/codeunit/ArvaWS\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <arv:TransferItemInventory>\r\n         <arv:userName>{{UserName}}</arv:userName>\r\n         <arv:itemNo>{{ItemNumber}}</arv:itemNo>\r\n         <arv:fromLocationCode>HL</arv:fromLocationCode>\r\n         <arv:fromBinCode>{{BinCode2}}</arv:fromBinCode>\r\n         <arv:toLocationCode>HL</arv:toLocationCode>\r\n         <arv:toBinCode>{{BinCode1}}</arv:toBinCode>\r\n         <arv:makeTargetBinAsDefault>true</arv:makeTargetBinAsDefault>\r\n         <arv:quantity>3</arv:quantity>\r\n         <arv:serialNumber></arv:serialNumber>\r\n         <arv:postNow>true</arv:postNow>\r\n      </arv:TransferItemInventory>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/{{CompanyName}}/Codeunit/ArvaWS",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"{{CompanyName}}",
+								"Codeunit",
+								"ArvaWS"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Artikel Abgang -ohne Lagerortangabe",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "SOAPAction",
+								"value": "urn:microsoft-dynamics-schemas/codeunit/ArvaWS:AdjustItemInventory",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:arv=\"urn:microsoft-dynamics-schemas/codeunit/ArvaWS\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <arv:AdjustItemInventory>\r\n         <arv:userName>{{UserName}}</arv:userName>\r\n         <arv:itemNo>{{ItemNumber}}</arv:itemNo>\r\n         <arv:fromLocationCode></arv:fromLocationCode>\r\n         <arv:fromBinCode>{{BinCode1}}</arv:fromBinCode>\r\n         <arv:quantity>-3</arv:quantity>\r\n         <arv:serialNumber></arv:serialNumber>\r\n         <arv:causeCode></arv:causeCode>\r\n         <arv:postNow>true</arv:postNow>\r\n      </arv:AdjustItemInventory>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/{{CompanyName}}/Codeunit/ArvaWS",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"{{CompanyName}}",
+								"Codeunit",
+								"ArvaWS"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Artikel Zugang mit Serien Nummern",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "SOAPAction",
+								"value": "urn:microsoft-dynamics-schemas/codeunit/ArvaWS:AdjustItemInventory",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:arv=\"urn:microsoft-dynamics-schemas/codeunit/ArvaWS\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n        <arv:AdjustItemInventory>\r\n            <arv:userName>{{UserName}}</arv:userName>\r\n            <arv:itemNo>{{ItemNumber2}}</arv:itemNo>\r\n            <arv:fromLocationCode>{{LocationCode1}}</arv:fromLocationCode>\r\n            <arv:fromBinCode>{{BinCode1}}</arv:fromBinCode>\r\n            <arv:quantity>3</arv:quantity>\r\n            <arv:serialNumber>{{SerialNumbers}}</arv:serialNumber>\r\n            <arv:causeCode></arv:causeCode>\r\n            <arv:postNow>true</arv:postNow>\r\n        </arv:AdjustItemInventory>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/{{CompanyName}}/Codeunit/ArvaWS",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"{{CompanyName}}",
+								"Codeunit",
+								"ArvaWS"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Artikel Umlagerung mit Serienummer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "SOAPAction",
+								"value": "urn:microsoft-dynamics-schemas/codeunit/ArvaWS:TransferItemInventory",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:arv=\"urn:microsoft-dynamics-schemas/codeunit/ArvaWS\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <arv:TransferItemInventory>\r\n         <arv:userName>{{UserName}}</arv:userName>\r\n         <arv:itemNo>{{ItemNumber2}}</arv:itemNo>\r\n         <arv:fromLocationCode>{{LocationCode1}}</arv:fromLocationCode>\r\n         <arv:fromBinCode>{{BinCode1}}</arv:fromBinCode>\r\n         <arv:toLocationCode>{{LocationCode1}}</arv:toLocationCode>\r\n         <arv:toBinCode>{{BinCode2}}</arv:toBinCode>\r\n         <arv:makeTargetBinAsDefault>false</arv:makeTargetBinAsDefault>\r\n         <arv:quantity>3</arv:quantity>\r\n         <arv:serialNumber>{{SerialNumbers}}</arv:serialNumber>\r\n         <arv:postNow>true</arv:postNow>\r\n      </arv:TransferItemInventory>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/{{CompanyName}}/Codeunit/ArvaWS",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"{{CompanyName}}",
+								"Codeunit",
+								"ArvaWS"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Artikel Abgang mit Serienummer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "SOAPAction",
+								"value": "urn:microsoft-dynamics-schemas/codeunit/ArvaWS:AdjustItemInventory",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:arv=\"urn:microsoft-dynamics-schemas/codeunit/ArvaWS\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <arv:AdjustItemInventory>\r\n         <arv:userName>{{UserName}}</arv:userName>\r\n         <arv:itemNo>{{ItemNumber2}}</arv:itemNo>\r\n         <arv:fromLocationCode>{{LocationCode1}}</arv:fromLocationCode>\r\n         <arv:fromBinCode>{{BinCode2}}</arv:fromBinCode>\r\n         <arv:quantity>-3</arv:quantity>\r\n         <arv:serialNumber>{{SerialNumbers}}</arv:serialNumber>\r\n         <arv:causeCode></arv:causeCode>\r\n         <arv:postNow>true</arv:postNow>\r\n      </arv:AdjustItemInventory>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/{{CompanyName}}/Codeunit/ArvaWS",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"{{CompanyName}}",
+								"Codeunit",
+								"ArvaWS"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Debitoren Anlage",
+			"item": [
+				{
+					"name": "Create Customer HU Country",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "SOAPAction",
+								"value": "urn:microsoft-dynamics-schemas/codeunit/ves:SetCustomer",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ves=\"urn:microsoft-dynamics-schemas/codeunit/VESFunctions\" xmlns:cus=\"urn:KUMAvision/ves/Customer\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <ves:SetCustomer>\r\n         <ves:customers>\r\n            <cus:Customer>\r\n               <cus:Name>Hallo Ungarn D</cus:Name>\r\n               <cus:Name2></cus:Name2>\r\n               <cus:Address></cus:Address>\r\n               <cus:Address2></cus:Address2>\r\n               <cus:PostCode></cus:PostCode>\r\n               <cus:City></cus:City>\r\n               <cus:CountryRegionCode>HU</cus:CountryRegionCode>\r\n               <cus:County></cus:County>\r\n               <cus:PhoneNo></cus:PhoneNo>\r\n               <cus:EMail></cus:EMail>\r\n               <cus:VATRegistrationNo></cus:VATRegistrationNo>\r\n               <cus:GeneralTermsConfirmed>true</cus:GeneralTermsConfirmed>\r\n               <cus:PayPalMailAdressReference></cus:PayPalMailAdressReference>\r\n               <cus:B2CCustomer>true</cus:B2CCustomer>\r\n               <cus:eBayUsername>MyEBayName</cus:eBayUsername>\r\n               <cus:ShopUserID></cus:ShopUserID>\r\n            </cus:Customer>\r\n         </ves:customers>\r\n         <ves:errorText></ves:errorText>\r\n         <ves:custNo></ves:custNo>\r\n      </ves:SetCustomer>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/{{CompanyName}}/Codeunit/VESFunctions",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"{{CompanyName}}",
+								"Codeunit",
+								"VESFunctions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "ntlm",
+		"ntlm": [
+			{
+				"key": "password",
+				"value": "{{AccountPassword}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{AccountName}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "ItemNumber",
+			"value": "00000797"
+		},
+		{
+			"key": "ItemNumberWithSNTracking",
+			"value": "DU",
+			"type": "string"
+		},
+		{
+			"key": "LocationCode1",
+			"value": "HL"
+		},
+		{
+			"key": "BinCode1",
+			"value": "H1",
+			"type": "string"
+		},
+		{
+			"key": "BinCode2",
+			"value": "H2",
+			"type": "string"
+		},
+		{
+			"key": "SerialNumbers",
+			"value": "Test001|Test002|Test003",
+			"type": "string"
+		},
+		{
+			"key": "ItemNumber2",
+			"value": "DU",
+			"type": "string"
+		},
+		{
+			"key": "LocationCode2",
+			"value": "SERVICE",
+			"type": "string"
+		},
+		{
+			"key": "UserName",
+			"value": "Scanner",
+			"type": "string"
+		}
+	]
+}
