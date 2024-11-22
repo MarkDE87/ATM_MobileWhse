@@ -14,7 +14,7 @@
     "CRS.ObjectNamePrefix": "PTEARV",
     "CRS.ObjectNameSuffix": "",
     "CRS.RemovePrefixFromFilename": false,
-    "xliffSync.baseFile": "ARV_MobileWhse.g.xlf",
+    "xliffSync.baseFile": "ARVA Mobile Whse.g.xlf",
     "bdev-al-xml-doc.checkProcedureDocumentation": false,
     "bracket-pair-colorizer-2.colors": [
         "DarkOrange",
