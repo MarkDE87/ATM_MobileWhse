@@ -1,10 +1,10 @@
 {
   "id": "101c36fd-1162-4c7f-a07f-25b0f1c9248b",
-  "name": "ARVA Mobile Whse",
+  "name": "ARVA API Services",
   "publisher": "ARVA Digital GmbH",
   "version": "1.0.0.0",
   "brief": "",
-  "description": "ARVA Digital Mobile Warehouse Interface",
+  "description": "ARVA Digital API Services",
   "privacyStatement": "",
   "EULA": "",
   "help": "",
